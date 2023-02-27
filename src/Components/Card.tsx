@@ -7,11 +7,11 @@ import {
 import { Layout } from "./Layout"
 import { buttonClick } from "./services/button"
 
-interface Icard {/*
+/*interface Icard {
     id: number,
     paragraph: string,
-    details: string */
-} 
+    details: string 
+} */
 
 export const Card = () => { //Usando a várivel criada no JS com a lib styled para o html: //o minHeidht é o tamanho mino da tela
     return (
