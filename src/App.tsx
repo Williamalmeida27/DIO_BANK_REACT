@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+
+//Usando o styled em uma váriável para usarmos no html, usando o tamplete string para trabalhar o css
+
+import { Card } from "./Components/Card";
+
+/* const Box = styled.div`
+background-color: orange;
+border-radius: 50px;
+padding-left: 15px
+`; Como não estamos usando o styled deixa ele comentado. Além de remover a importação import styled from 'styled-components';*/
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return ( 
+    
+    <Card />
+    
   );
 }
 
