@@ -1,48 +1,34 @@
 import { 
-    ChakraProvider, 
-    Container, 
-    Center, Input, 
-    Button, 
+    Center, Input,
     Box } from "@chakra-ui/react"
-import { Layout } from "./Layout"
-import { buttonClick } from "./services/button"
+import { DButton } from "../services/DButton";
+import { Login } from "../services/login";
+import { useState } from "react";
 
-/*interface Icard {
-    id: number,
-    paragraph: string,
-    details: string 
-} */
+
 
 export const Card = () => { //Usando a várivel criada no JS com a lib styled para o html: //o minHeidht é o tamanho mino da tela
-    return (
+    //Usando estados:
 
-        <Layout>
+    const [email, setEmail] = useState<string>('') //Criando um estado do tipo string e seu valor é string vazia.
+    
 
-        <ChakraProvider>
-
-            <Container maxW='2x1' bg='#9413dc' minHeight='100vh' padding='50px'>
+    return (        
+            
 
                 <Box backgroundColor='#ffffff' borderRadius='25px' padding='50px'>
                     <Center margin='25px'>
                         <h1>Faça o login:</h1>
                     </Center>
 
-                    <Input placeholder='E-mail' />
+                    <Input placeholder='E-mail' value={email} onChange={(event) => setEmail(event.target.value)} />
                     <Input placeholder='Senha' marginTop='5px' />
 
                     <Center>
-                        <Button onClick={buttonClick} colorScheme='teal' size='sm' width='100%' marginTop='10px'>
-                            Entrar
-                        </Button>
-                    </Center>
+                    <DButton onClick={() => Login(email)}/>
+                    </Center>             
 
                 </Box>
-
-            </Container>
-
-        </ChakraProvider>
-
-        </Layout>
 
         /* 
             <div>

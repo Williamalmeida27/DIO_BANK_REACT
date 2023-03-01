@@ -1,20 +1,28 @@
-
-
-//Usando o styled em uma váriável para usarmos no html, usando o tamplete string para trabalhar o css
-
-import { Card } from "./Components/Card";
-
-/* const Box = styled.div`
-background-color: orange;
-border-radius: 50px;
-padding-left: 15px
-`; Como não estamos usando o styled deixa ele comentado. Além de remover a importação import styled from 'styled-components';*/
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout } from "./Components/Layout";
+import Conta from "./pages/Conta";
+import ContaInfo from "./pages/ContaInfor";
+import Home from "./pages/Home";
 
 function App() {
-  return ( 
-    
-    <Card />
-    
+  return (
+    <BrowserRouter>
+      <ChakraProvider>
+        <Layout>
+
+          <Routes>
+
+            <Route path="/" element={<Home />} />
+            <Route path="/Conta/:id" element={<Conta />} />
+            <Route path='/infoconta' element={<ContaInfo />} />
+
+          </Routes>
+
+        </Layout>
+      </ChakraProvider>
+
+    </BrowserRouter>
   );
 }
 
