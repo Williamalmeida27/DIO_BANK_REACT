@@ -1,7 +1,8 @@
 import { Center, SimpleGrid, Spinner } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../api";
+import { AppContext } from "../Components/AppContext";
 import CardInfo from "../Components/CardInfo";
 
 interface IUserData {
@@ -30,52 +31,43 @@ const Conta = () => {
 
     const actualData = new Date();
 
-    const {id} = useParams() //Metodo do react dom para receber parametros.
+    const { id } = useParams() //Metodo do react dom para receber parametros.
     const navigate = useNavigate()
-    
-    
+
+    const {isLoggedIn} = useContext(AppContext) //Trazendo o contexto do paramtero logado.
+
+    !isLoggedIn && navigate('/') //Testanto se o parametro for verdadeiro ele navega para /, lembrando que esse valor vai de acordo com true ou false la do context
+
 
     if (userData && id !== userData.id) {
         navigate('/')
-        
+
     }
 
     return (
 
         <>
-
             {userData === null || userData === undefined ?
                 <Center>
-
-                    <Spinner size={"xl"} color='#ffffff'/>
-
+                    <Spinner size={"xl"} color='#ffffff' />
                 </Center>
-
                 :
                 <Center>
                     <SimpleGrid columns={2} spacing={8} paddingTop={16}>
-
                         <CardInfo
                             mainContent={`Bem vindo ${userData?.name}!`}
                             content={`${actualData.getDay()}
-            /${actualData.getMonth()}
-            /${actualData.getFullYear()} ${actualData.getHours()}:${actualData.getMinutes()}`}
+                                        /${actualData.getMonth()}
+                                         /${actualData.getFullYear()} ${actualData.getHours()}:${actualData.getMinutes()}`}
                         />
-
                         <CardInfo
                             mainContent="Saldo"
                             content={`R$ ${userData?.balance}`}
                         />
-
                     </SimpleGrid>
-
                 </Center>
-
             }
-
         </>
-
-
     )
 }
 

@@ -1,5 +1,27 @@
 import { Login } from "./login";
 
+//Desestruturando uma lib do react para acessar o nosso componente setloggin:
+const mockSetIsLoggedIn = jest.fn()
+
+jest.mock('react', () =>({
+    ...jest.requireActual('react'),
+    useContext: () => ({
+        setIsLoggedIn: mockSetIsLoggedIn
+    })
+}))
+
+//Desestruturando outra lib:
+
+const mockNavigate = jest.fn()
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom') as any,
+    useNavigate: () => mockNavigate
+        
+    })
+)
+
+
 
 describe('Login', () => {
 
@@ -7,21 +29,19 @@ describe('Login', () => {
     window.alert = mockAlert
     const mockEmail = 'William@gmail.com'
 
+    
 
     it('Deve exibir um com boas vindas se o e-mail for válido', async () => {//Testando se o que está na função login é um alert.
         await Login(mockEmail) //Espere o email
+        expect(mockSetIsLoggedIn).toHaveBeenCalledWith(true)
+        expect(mockNavigate).toHaveBeenLastCalledWith('/1')
         expect(mockAlert).toHaveBeenCalledWith(`Bem vindo ${mockEmail}`)
 
-    });
-
-    it('Deve exibir uma mensagem de boas vindas sem o e-mail ', async () => {//Mesmo teste, porém validando se o que tem dnetro é um bem vindo!
-        await Login(mockEmail)
-        expect(mockAlert).not.toHaveBeenCalledWith('Bem vindo') //Neste teste ele não deve passa.
-
-    });
+    }); //Neste teste estou aguardando o email mockado, e esperando que setlogado seja true e lá da service login, além de passa um parametro id '/1' para que este teste funcione.
 
     it('Deve exibir um erro caso o e-mail seja inválido ', async () => {
         await Login('Email@invalido.com')
+        expect(mockSetIsLoggedIn).not.toHaveBeenLastCalledWith()
         expect(mockAlert).toHaveBeenCalledWith('E-mail inválido')
         
     });
