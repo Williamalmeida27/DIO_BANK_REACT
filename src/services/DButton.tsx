@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/react"
 
 interface IDButton{
    // onClick: () => void; //Porém podemos passar o evento direto: MouseEventHandler
-   onClick: () => void;
+   onClick: () => any;
 }
 
 //Usando interface com propriedade de evento

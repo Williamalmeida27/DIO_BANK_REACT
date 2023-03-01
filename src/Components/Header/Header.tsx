@@ -1,17 +1,39 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Button, Flex, Spacer, Text } from '@chakra-ui/react'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../AppContext'
 import './Header.css'
 
 export const Header = () => {
-    const context = useContext(AppContext)//Trazendo o estado global do conext criado no app
-    console.log(context) //Testando do estado
+    const { isLoggedIn, setIsLoggedIn } = useContext(AppContext)//Trazendo o estado global do conext criado no app
+    const navigate = useNavigate()
+
+    const logout = () => {
+        setIsLoggedIn(false)
+        navigate('/')
+    }
 
     return ( //Para trabalhar com a classe importada acima do css, usamos o className='Header'
+        <Flex backgroundColor='#ff4538' borderBottomStyle='inherit' borderBottomWidth='5px' padding='5px'>
+            <Box>
+                <Text fontSize='3xl' color='#ffffff'>
+                    DIO BANK
+                </Text>
+            </Box>
+            {
+                isLoggedIn && (
+                    <>
+                        <Spacer />
+                        <Button onClick={() => logout()}>
+                            SAIR
+                        </Button>
 
-        <Box color='#ffffff' marginBottom='50px' height='45px' display='flex' alignItems='center' justifyContent='center' bg='#ff4538' borderBottomStyle='inherit' borderBottomWidth='5px'>
-            <h1>DIO BANK</h1>
-        </Box>
+                    </>
+                )
+            }
+
+        </Flex>
+
 
     )
 

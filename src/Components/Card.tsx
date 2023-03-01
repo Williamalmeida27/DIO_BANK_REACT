@@ -1,12 +1,14 @@
-import { Box } from "@chakra-ui/react"
+import { Box, Center } from "@chakra-ui/react"
 
 
 export const Card = ({ children }: any) => {
 
     return (
-        <Box backgroundColor='#ffffff' borderRadius='25px' padding='50px'>
-            {children}
-        </Box>
+        <Center>
+            <Box backgroundColor='#ffffff' borderRadius='25px' padding='120px' marginTop='50px'>
+                {children}
+            </Box>
+        </Center>
 
         /* 
             <div>
