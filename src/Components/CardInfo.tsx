@@ -15,6 +15,7 @@ const CardInfo = ({mainContent, content}: ICardInfo) => {
                 {content}
             </Text>
         </Box>
+        
     )
 }
 
