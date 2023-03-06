@@ -3,7 +3,7 @@ import { Login } from "./login";
 //Realizando testes
 
 describe('Login', () => {
-    const mockEmail = 'William@gmail.com'
+    const mockEmail = 'Bank@gmail.com'
     const mockSenha = '12345'
 
     

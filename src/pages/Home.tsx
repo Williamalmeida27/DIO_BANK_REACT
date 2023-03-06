@@ -40,7 +40,7 @@ const Home = () => {
             </Center>
 
             <Input placeholder='E-mail' value={user} onChange={(event) => setUser(event.target.value)} />
-            <Input placeholder='Senha' value={password} onChange={(event) => setPassword(event.target.value)} marginTop='5px' />
+            <Input type={password} placeholder='Senha' value={password} onChange={(event) => setPassword(event.target.value)} marginTop='5px' />
             
 
             <Center>
