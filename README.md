@@ -1,3 +1,9 @@
+#Para acessar o site, segue os dados de acesso:
+
+user: Bank@gmail.com
+senha: 12345
+
+
 Desenvolvendo o Dio Bank
 desenvolvido por Wiliam Almeida
 
