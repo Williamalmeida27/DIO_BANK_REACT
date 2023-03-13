@@ -1,5 +1,7 @@
 #Para acessar o site, segue os dados de acesso:
 
+https://williambank.netlify.app/
+
 user: Bank@gmail.com
 senha: 12345
 
